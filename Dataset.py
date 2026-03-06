@@ -1,8 +1,5 @@
-import torch 
 from torch.utils.data import Dataset, DataLoader
 from sentence_transformers import SentenceTransformer
-
-device = "cuda" if torch.cuda.is_available() else "cpu"
 
 def load_dataset(dataset_path:str):
     temp_dataset_df = pd.read_csv(dataset_path, nrows=2, low_memory=True, memory_map=True)
