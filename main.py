@@ -1,8 +1,8 @@
 import torch
-from Dataset import load_dataset, ToxicityDataset
-from MMoE import MMoE
-from SharedBottomModel import SharedBottomMLT
-from ModelTrainer import ModelTrainer
+from MLTLib.Dataset import load_dataset, ToxicityDataset
+from Models.MMoE import MMoE
+from Models.SharedBottomModel import SharedBottomMLT
+from MLTLib.ModelTrainer import ModelTrainer
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 
