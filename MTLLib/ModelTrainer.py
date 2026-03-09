@@ -1,4 +1,3 @@
-```python
 import torch
 import logging
 from tqdm import tqdm
@@ -136,6 +135,10 @@ class ModelTrainer:
         return running_loss / len(self.valid_dataloader)
 
     def save_checkpoint(self, epoch, best_loss, is_best=False, filename=None):
+        ## save to ModelBinaries folder under the folder of the name of the model
+        if not os.path.exists(f"ModelBinaries/{self.model_name}"):
+            os.makedirs(f"ModelBinaries/{self.model_name}")
+            
         state = {
             'epoch': epoch,
             'model_state_dict': self.model.state_dict(),
@@ -144,10 +147,10 @@ class ModelTrainer:
         }
         
         if filename is None:
-            filename = f"{self.model_name}_last_checkpoint.pth"
+            filename = f"ModelBinaries/{self.model_name}/{self.model_name}_last_checkpoint.pth"
         
         torch.save(state, filename)
         if is_best:
-            best_filename = f"{self.model_name}_best_model.pth"
+            best_filename = f"ModelBinaries/{self.model_name}/{self.model_name}_best_model.pth"
             torch.save(state, best_filename)
             self.logger.info(f"Saved new best model with validation loss: {best_loss:.4f}")

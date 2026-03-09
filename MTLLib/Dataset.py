@@ -1,16 +1,50 @@
+import pandas as pd
+import numpy as np
 from torch.utils.data import Dataset, DataLoader
 from sentence_transformers import SentenceTransformer
+import logging
 
-def load_dataset(dataset_path:str):
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+if not logger.handlers:
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+def load_dataset(dataset_path:str, test=False):
+    logger.info(f"Loading first 2 rows of '{dataset_path}' to infer datatypes...")
     temp_dataset_df = pd.read_csv(dataset_path, nrows=2, low_memory=True, memory_map=True)
-
+    
     mapdtype = {'int64': 'int32', 'float64':'float32'}
     dataset_dtypes = list(temp_dataset_df.dtypes.apply(str).replace(mapdtype))
     dataset_dtypes = {key: value for (key, value) in enumerate(dataset_dtypes)}
 
-    dataset_df = pd.read_csv(dataset_path, nrows=20000, low_memory=True, memory_map=True, dtype=dataset_dtypes)
+    nrows = 10000 if test else 100000
+    logger.info(f"Loading {nrows} rows from '{dataset_path}' with explicit datatypes...")
+    dataset_df = pd.read_csv(dataset_path, nrows=nrows, low_memory=True, memory_map=True, dtype=dataset_dtypes)
 
-    return dataset_df
+    if test:
+        return dataset_df
+
+    logger.info(f"Loaded {len(dataset_df)} rows. Filtering toxic vs safe comments...")
+    toxic_df = dataset_df[dataset_df['target'] >= 0.5]
+    safe_df = dataset_df[dataset_df['target'] < 0.5]
+
+    # 2. Undersample the safe comments to match the number of toxic comments
+    logger.info(f"Undersampling safe comments ({len(safe_df)}) to match toxic comments ({len(toxic_df)})...")
+    safe_undersampled_df = safe_df.sample(n=len(toxic_df), random_state=42)
+
+    # 3. Recombine and shuffle
+    logger.info("Recombining and shuffling the balanced dataset...")
+    balanced_train_df = pd.concat([toxic_df, safe_undersampled_df]).sample(frac=1, random_state=42).reset_index(drop=True)
+
+    balanced_valid_df = balanced_train_df[:2000]
+    balanced_train_df = balanced_train_df[2000:]
+    
+    logger.info(f"Dataset preparation complete: {len(balanced_train_df)} training samples, {len(balanced_valid_df)} validation samples.")
+    return balanced_train_df, balanced_valid_df
 
 
 ## Writing a custom Dataset class for the Toxicity Dataset
@@ -24,6 +58,7 @@ class ToxicityDataset(Dataset):
         Returns
             PyTorch Dataset object
         """
+        logger.info(f"Initializing ToxicityDataset (train={train}) with {len(toxicity_df)} samples...")
         self.toxicity_df = toxicity_df
         self.embedding_model = embedding_model
         self.train = train
@@ -33,7 +68,9 @@ class ToxicityDataset(Dataset):
             self.toxicity_df.loc[:, 'click_label'] = np.where(self.toxicity_df['likes'] >= 4, 1, 0)
 
         comment_text = self.toxicity_df['comment_text'].tolist()
+        logger.info(f"Encoding {len(comment_text)} comments using embedding model... This may take a while.")
         self.comment_text_embd = embedding_model.encode(comment_text)
+        logger.info("Encoding complete.")
 
     def __len__(self):
         """Returns the length of the dataset"""
