@@ -151,4 +151,3 @@ class ModelTrainer:
             best_filename = f"{self.model_name}_best_model.pth"
             torch.save(state, best_filename)
             self.logger.info(f"Saved new best model with validation loss: {best_loss:.4f}")
-```

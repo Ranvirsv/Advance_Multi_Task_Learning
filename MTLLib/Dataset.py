@@ -16,19 +16,21 @@ def load_dataset(dataset_path:str):
 ## Writing a custom Dataset class for the Toxicity Dataset
 class ToxicityDataset(Dataset):
     """PyTorch Class for Toxicity Dataset"""
-    def __init__(self, toxicity_df, embedding_model):
+    def __init__(self, toxicity_df, embedding_model, train=True):
         """
         Args
             toxicity_df: The input DataFrame
             embedding_model: The SentenceTransformer model to be used for embeddings
         Returns
-            PyTorch Dataset object  
+            PyTorch Dataset object
         """
         self.toxicity_df = toxicity_df
         self.embedding_model = embedding_model
-        
-        self.toxicity_df['toxic_label'] = np.where(self.toxicity_df['target'] >= 0.5, 1, 0)
-        self.toxicity_df['click_label'] = np.random.randint(2, size=20000)
+        self.train = train
+
+        if self.train:
+            self.toxicity_df.loc[:, 'toxic_label'] = np.where(self.toxicity_df['target'] >= 0.5, 1, 0)
+            self.toxicity_df.loc[:, 'click_label'] = np.where(self.toxicity_df['likes'] >= 4, 1, 0)
 
         comment_text = self.toxicity_df['comment_text'].tolist()
         self.comment_text_embd = embedding_model.encode(comment_text)
@@ -37,7 +39,7 @@ class ToxicityDataset(Dataset):
         """Returns the length of the dataset"""
         return len(self.toxicity_df)
         
-    def __get_item__(self, idx):
+    def __getitem__(self, idx):
         """
         Args
             idx: index of the item to be retrived
@@ -45,5 +47,10 @@ class ToxicityDataset(Dataset):
             embeddings, binary toxic label, binary click label at the idx
         """
         df_idx = self.toxicity_df.iloc[idx]
-        return (self.comment_text_embd[idx], df_idx['toxic_label'], df_idx['click_label'])
         
+        if self.train:
+            out = (self.comment_text_embd[idx], df_idx['toxic_label'], df_idx['click_label'])
+        else: 
+            out = (self.comment_text_embd[idx])
+            
+        return out
