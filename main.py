@@ -15,7 +15,7 @@ def SharedModelExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, 
     criterion = [nn.BCELoss(), nn.BCELoss()]
     optimizer = optim.SGD(shared_bottom_model.parameters(), lr=0.001)
 
-    model_trainer = ModelTrainer(shared_bottom_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device)
+    model_trainer = ModelTrainer(shared_bottom_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device, "SharedBottomModel")
     model_trainer.train()
 
 def main():

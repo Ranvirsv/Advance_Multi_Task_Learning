@@ -1,13 +1,14 @@
 import torch
 
 class ModelTrainer:
-    def __init__(self, model, train_dataloader, valid_dataloader, criterion, optimizer, device):
+    def __init__(self, model, train_dataloader, valid_dataloader, criterion, optimizer, device, model_name):
         self.model = model
         self.train_dataloader = train_dataloader
         self.valid_dataloader = valid_dataloader
         self.criterion = criterion
         self.optimizer = optimizer
         self.device = device
+        self.model_name = model_name
 
     def train_one_epoch(self, print_every=25):
         running_loss = 0.
@@ -48,7 +49,7 @@ class ModelTrainer:
             print(f"Train Loss: {train_loss:.4f}, Valid Loss: {valid_loss:.4f}")
             if valid_loss < best_loss:
                 best_loss = valid_loss
-                torch.save(self.model.state_dict(), "best_model.pth")
+                torch.save(self.model.state_dict(), f"{self.model_name}_best_model.pth")
                 print("Saved best model")
 
     def evaluate(self):
