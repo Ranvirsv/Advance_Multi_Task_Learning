@@ -1,8 +1,9 @@
 import torch
-from MLTLib.Dataset import load_dataset, ToxicityDataset
-from Models.MMoE import MMoE
+from MTLLib.Dataset import load_dataset, ToxicityDataset
+from Models.MMoE import BasicMMoE
+from Models.MoE import BasicMoE
 from Models.SharedBottomModel import SharedBottomMLT
-from MLTLib.ModelTrainer import ModelTrainer
+from MTLLib.ModelTrainer import ModelTrainer
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 
@@ -13,9 +14,27 @@ def SharedModelExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, 
     shared_bottom_model.to(device)
 
     criterion = [nn.BCELoss(), nn.BCELoss()]
-    optimizer = optim.SGD(shared_bottom_model.parameters(), lr=0.001)
+    optimizer = optim.Adam(shared_bottom_model.parameters(), lr=0.001, weight_decay=0.001)
 
     model_trainer = ModelTrainer(shared_bottom_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device, "SharedBottomModel")
+    model_trainer.train()
+
+def MoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device):
+    BasicMoE_model = BasicMoE()
+    BasicMoE_model.to(device)
+
+    optimizer = optim.Adam(BasicMoE_model.parameters(), lr=0.001, weight_decay=0.001)
+
+    model_trainer = ModelTrainer(BasicMoE_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device, "BasicMoE")
+    model_trainer.train()
+
+def MMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device):
+    BasicMMoE_model = BasicMMoE()
+    BasicMMoE_model.to(device)
+
+    optimizer = optim.Adam(BasicMMoE_model.parameters(), lr=0.001, weight_decay=0.001)
+
+    model_trainer = ModelTrainer(BasicMMoE_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device, "BasicMMoE")
     model_trainer.train()
 
 def main():
@@ -42,6 +61,8 @@ def main():
 
     ## Model Initializatoins
     SharedModelExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device)
+    MoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device)
+    MMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device)
 
     
 if __name__ == "__main__":

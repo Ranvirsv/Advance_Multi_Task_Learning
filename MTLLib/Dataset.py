@@ -30,7 +30,7 @@ class ToxicityDataset(Dataset):
         self.toxicity_df['toxic_label'] = np.where(self.toxicity_df['target'] >= 0.5, 1, 0)
         self.toxicity_df['click_label'] = np.random.randint(2, size=20000)
 
-        comment_text = toxicity_train_df['comment_text'].tolist()
+        comment_text = self.toxicity_df['comment_text'].tolist()
         self.comment_text_embd = embedding_model.encode(comment_text)
 
     def __len__(self):
