@@ -11,3 +11,17 @@
 2026-03-09 18:58:07,688 - BasicMoE - INFO - No improvement in validation loss for 3 epoch(s).
 2026-03-09 18:58:07,688 - BasicMoE - INFO - Early stopping triggered after 4 epochs.
 2026-03-09 18:58:07,688 - BasicMoE - INFO - Training completed.
+2026-03-10 14:39:27,444 - BasicMoE - INFO - --------------------------------------------------
+2026-03-10 14:39:27,444 - BasicMoE - INFO - Started Training: BasicMoE
+2026-03-10 14:39:27,444 - BasicMoE - INFO - --------------------------------------------------
+2026-03-10 14:39:29,850 - BasicMoE - INFO - Epoch 1/5 - Train Loss: 1.1619, Valid Loss: 1.1071
+2026-03-10 14:39:29,872 - BasicMoE - INFO - Saved new best model with validation loss: 1.1071
+2026-03-10 14:39:32,164 - BasicMoE - INFO - Epoch 2/5 - Train Loss: 1.0858, Valid Loss: 1.1069
+2026-03-10 14:39:32,184 - BasicMoE - INFO - Saved new best model with validation loss: 1.1069
+2026-03-10 14:39:34,486 - BasicMoE - INFO - Epoch 3/5 - Train Loss: 1.0436, Valid Loss: 1.0985
+2026-03-10 14:39:34,506 - BasicMoE - INFO - Saved new best model with validation loss: 1.0985
+2026-03-10 14:39:36,846 - BasicMoE - INFO - Epoch 4/5 - Train Loss: 0.9940, Valid Loss: 1.0988
+2026-03-10 14:39:36,846 - BasicMoE - INFO - No improvement in validation loss for 1 epoch(s).
+2026-03-10 14:39:39,115 - BasicMoE - INFO - Epoch 5/5 - Train Loss: 0.9382, Valid Loss: 1.1137
+2026-03-10 14:39:39,115 - BasicMoE - INFO - No improvement in validation loss for 2 epoch(s).
+2026-03-10 14:39:39,115 - BasicMoE - INFO - Training completed.

@@ -65,7 +65,7 @@ class ToxicityDataset(Dataset):
 
         if self.train:
             self.toxicity_df.loc[:, 'toxic_label'] = np.where(self.toxicity_df['target'] >= 0.5, 1, 0)
-            self.toxicity_df.loc[:, 'click_label'] = np.where(self.toxicity_df['likes'] >= 4, 1, 0)
+            self.toxicity_df.loc[:, 'click_label'] = np.where(self.toxicity_df['likes'] >= 2, 1, 0)
 
         comment_text = self.toxicity_df['comment_text'].tolist()
         logger.info(f"Encoding {len(comment_text)} comments using embedding model... This may take a while.")

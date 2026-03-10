@@ -2,23 +2,73 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-class GatingNetwork(nn.Module):
-    def __init__(self, input_dim, num_experts):
-        super().__init__()
-        self.gate = nn.Linear(input_dim, num_experts)
-        self.Softmax = nn.Softmax(dim=1)
+class SoftmaxTemperature(nn.Module):
+    def __init__(self, temperature=1.0, dim=1):
+        super(SoftmaxTemperature, self).__init__()
+        self.temperature = temperature
+        self.dim = dim
 
     def forward(self, x):
-        return self.Softmax(self.gate(x))
+        # Scale logits by temperature before softmax
+        return torch.softmax(x / self.temperature, dim=self.dim)
+
+
+class GatingNetwork(nn.Module):
+    def __init__(self, input_dim, num_experts, num_hidden_dim=0, temperature=1.0):
+        super().__init__()
+
+        if num_hidden_dim==0:
+            self.gate = nn.Sequential(
+                nn.Linear(input_dim, num_experts),
+                SoftmaxTemperature(temperature=temperature)
+            )
+            return 
+            
+        gate = [
+            nn.Linear(input_dim, 128), 
+            nn.ReLU(),
+            nn.Linear(128, num_experts),
+            SoftmaxTemperature(temperature=temperature)
+        ]
+
+        hidden_layers = []
+        for _ in range(num_hidden_dim):
+            hidden_layers.extend([nn.Dropout(0.5), nn.Linear(128, 128), nn.ReLU()])
+            
+        gate[2:2] = hidden_layers
+        self.gate = nn.Sequential(*gate)
+        
+
+    def forward(self, x):
+        return self.gate(x)
 
 class ExpertNetwork(nn.Module):
-    def __init__(self, input_dim, output_dim):
+    def __init__(self, input_dim, output_dim, hidden_dim=128, num_hidden_dim=0, activation='relu'):
         super().__init__()
-        self.linear = nn.Linear(input_dim, output_dim)
-        self.ReLU = nn.ReLU()
+        fx = nn.ReLU() if activation == 'relu' else nn.Sigmoid()
+        if num_hidden_dim==0:
+            self.expert = nn.Sequential(
+                nn.Linear(input_dim, output_dim),
+                fx
+            )
+            return 
+            
+        expert = [
+            nn.Linear(input_dim, hidden_dim), 
+            nn.ReLU(),
+            nn.Linear(hidden_dim, output_dim),
+            fx
+        ]
+
+        hidden_layers = []
+        for _ in range(num_hidden_dim):
+            hidden_layers.extend([nn.Dropout(0.5), nn.Linear(hidden_dim, hidden_dim), nn.ReLU()])
+            
+        expert[2:2] = hidden_layers
+        self.expert = nn.Sequential(*expert)
 
     def forward(self, x):
-        return self.ReLU(self.linear(x))
+        return self.expert(x)
 
 class BasicMoE(nn.Module):
     def __init__(self, input_dim, output_dim, num_experts, trained_experts=None):
@@ -26,29 +76,30 @@ class BasicMoE(nn.Module):
         
         self.num_experts = num_experts
         
-        if trained_experts:
+        if trained_experts: 
             for expert in trained_experts:
                 for param in expert.parameters():
                     param.requires_grad = False
-
-        self.experts = nn.ModuleList(
-            [
-                expert_model.expert for expert_model in trained_experts
-            ] if trained_experts else [
-                ExpertNetwork(input_dim, output_dim) for _ in range(self.num_experts)
-            ]
-        )
+                    
+            self.experts = nn.ModuleList(expert.model_expert for expert in trained_experts)
+            
+        else:
+            self.experts = nn.ModuleList(
+                [
+                    ExpertNetwork(input_dim, output_dim) for _ in range(self.num_experts)
+                ]
+            )
 
         self.gating_network = GatingNetwork(input_dim, self.num_experts)
 
-        # 2. Task Head A: Engagement (Input 128 -> Output 1)
-        self.engagement_head = trained_experts[0].engagement_head if trained_experts else nn.Sequential(
+        # 1. Task Head A: Engagement (Input 128 -> Output 1)
+        self.engagement_head = trained_experts[0].model_head if trained_experts else nn.Sequential(
             nn.Linear(128, 1),
             nn.Sigmoid()
         )
 
         # 2. Task Head B: Toxicity (Input 128 -> Output 1)
-        self.toxicity_head = trained_experts[1].toxicity_head if trained_experts else nn.Sequential(
+        self.toxicity_head = trained_experts[1].model_head if trained_experts else nn.Sequential(
             nn.Linear(128, 1),
             nn.Sigmoid()
         )

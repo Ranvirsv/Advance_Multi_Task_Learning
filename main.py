@@ -102,7 +102,7 @@ def main():
     ## Model Initializatoins
     SharedModelExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device)
     BasicMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device)
-    TrainedExpertsMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device)
+    # TrainedExpertsMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device)
     BasicMMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device)
 
     
