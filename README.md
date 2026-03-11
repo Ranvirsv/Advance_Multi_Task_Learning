@@ -25,29 +25,35 @@ Stores the PyTorch model architectures built for experimenting with Multi-Task L
 - **`Multi-Task Learning Notebook.ipynb`**: An extensive Jupyter Notebook mapping out the exploratory process. It includes data preparation steps using pandas, PyTorch Dataset definition, full exploratory Shared Bottom, MoE, and MMoE model training workflows, and evaluation functions that utilize `scikit-learn` to plot Precision-Recall and ROC-AUC curves for assessing task performance metrics visually.
 
 ### Root Files
-- **`main.py`**: The main execution script. It loads environment variables, initializes the `SentenceTransformer` and device setups, prepares DataLoaders for the train, valid, and test datasets, and then sequentially runs training experiments for Shared-Bottom, MoE, and MMoE architectures using components from `Models` and `MTLLib`.
-- **`.env`**: Holds local environment variables, primarily the paths to the dataset splits. Needs to include variables like `TOXICITY_TRAIN_PATH` and `TOXICITY_TEST_PATH`.
-- **`pyproject.toml`**: Metadata and dependency file outlining the `advance-multi-task-learning` project's configuration for Python 3.12+.
+- **`train.py`**: The main training script. It loads environment variables, initializes the `SentenceTransformer` and device setups, prepares DataLoaders, and sequentially trains the Shared-Bottom, MoE, and MMoE architectures. The best model weights across experiments are saved in `ModelBinaries`. 
+- **`test.py`**: The model evaluation and inference script. It dynamically loads previously trained models from `ModelBinaries`, calculates performance metrics (`ROC-AUC`, `Loss`, `Accuracy`) using a labeled validation subset, and generates pure inferences on an unlabeled true test set. Predictions are nicely formatted into a `test_predictions.md` artifact.
+- **`.env`**: Holds local environment variables, primarily the root path to the dataset directory (`TOXICITY_DATASET_DIR`).
+- **`pyproject.toml`**: Metadata and dependency file outlining the `advance-multi-task-learning` project's configuration for Python 3.12+. Managed via `uv`.
 
 ## Installation & Setup
 
 1. **Clone the repository** and navigate to the root directory.
-2. **Ensure Python 3.12+** is installed.
-3. Install required libraries (from the exploratory notebook's footprint): 
+2. Ensure you have the [uv](https://github.com/astral-sh/uv) package manager installed.
+3. Sync the environment and install dependencies:
     ```bash
-    pip install torch pandas numpy scikit-learn sentence-transformers matplotlib python-dotenv
+    uv sync
     ```
-4. **Environment Configuration**: Ensure your `.env` file exists at the root with dataset paths:
+4. **Environment Configuration**: Ensure your `.env` file exists at the root with the dataset directory path:
     ```env
-    TOXICITY_TRAIN_PATH="/path/to/your/train.csv"
-    TOXICITY_TEST_PATH="/path/to/your/test.csv"
+    TOXICITY_DATASET_DIR="./Dataset/jigsaw-unintended-bias-in-toxicity-classification"
     ```
+    > Note: On its first run, `MTLLib.Dataset` will parse the raw `.csv` files into subsets and permanently cache them as `balanced_train.csv`, `balanced_valid.csv`, and `cleaned_test.csv` in this directory to drastically speed up future loads.
 
 ## Usage
 
-To start training experiments evaluating the Shared-Bottom, MoE, and MMoE architectures sequentially, execute:
+To start training experiments evaluating the Shared-Bottom, MoE, and MMoE architectures, simply execute:
 ```bash
-python main.py
+uv run train.py
 ```
+This will automatically download the `all-MiniLM-L6-v2` transformer model, process textual inputs into dense embeddings on the fly, and save the best model weights dynamically.
 
-This will automatically trigger downloading/loading the `all-MiniLM-L6-v2` transformer model, process textual inputs into dense embeddings on the fly, and run the entire sequential training pipeline over your datasets. The best model weights across experiments are observed and saved automatically within a dynamically generated `ModelBinaries` directory, alongside individual training logs.
+Once trained, to evaluate all available models and generate predictions, run:
+```bash
+uv run test.py
+```
+This will dynamically find the architectures that have weights in `ModelBinaries`, output evaluation metrics to the console, and generate a markdown table sheet with pure dataset predictions in `test_predictions.md`.
