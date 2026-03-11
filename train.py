@@ -84,8 +84,7 @@ def main():
     embedding_model = SentenceTransformer('all-MiniLM-L6-v2', device=device)
 
     ## Loading the train and validation data
-    toxicity_train_path = os.getenv("TOXICITY_TRAIN_PATH")
-    toxicity_train_df, toxicity_valid_df = load_dataset(toxicity_train_path)
+    toxicity_train_df, toxicity_valid_df = load_dataset(split="train")
     
     toxicity_train_dataset = ToxicityDataset(toxicity_train_df, embedding_model)
     toxicity_valid_dataset = ToxicityDataset(toxicity_valid_df, embedding_model)
@@ -93,8 +92,7 @@ def main():
     toxicity_valid_dataloader = DataLoader(toxicity_valid_dataset, batch_size=32, shuffle=False)
 
     ## Loading the test data
-    toxicity_test_path = os.getenv("TOXICITY_TEST_PATH")
-    toxicity_test_df = load_dataset(toxicity_test_path, test=True)
+    toxicity_test_df = load_dataset(split="test")
     
     toxicity_test_dataset = ToxicityDataset(toxicity_test_df, embedding_model, train=False)
     toxicity_test_dataloader = DataLoader(toxicity_test_dataset, batch_size=32, shuffle=False)

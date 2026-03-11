@@ -1,8 +1,12 @@
 import pandas as pd
 import numpy as np
+import os
 from torch.utils.data import Dataset, DataLoader
 from sentence_transformers import SentenceTransformer
 import logging
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -13,19 +17,49 @@ if not logger.handlers:
     ch.setFormatter(formatter)
     logger.addHandler(ch)
 
-def load_dataset(dataset_path:str, test=False):
-    logger.info(f"Loading first 2 rows of '{dataset_path}' to infer datatypes...")
-    temp_dataset_df = pd.read_csv(dataset_path, nrows=2, low_memory=True, memory_map=True)
+def load_dataset(split="train"):
+    dataset_dir = os.getenv("TOXICITY_DATASET_DIR", "./Dataset/jigsaw-unintended-bias-in-toxicity-classification")
+    if split == "train":
+        clean_train_path = os.path.join(dataset_dir, "balanced_train.csv")
+        clean_valid_path = os.path.join(dataset_dir, "balanced_valid.csv")
+        
+        if os.path.exists(clean_train_path) and os.path.exists(clean_valid_path):
+            logger.info(f"Existing balanced datasets found in {dataset_dir}. Loading them directly...")
+            balanced_train_df = pd.read_csv(clean_train_path)
+            balanced_valid_df = pd.read_csv(clean_valid_path)
+            logger.info(f"Loaded {len(balanced_train_df)} training samples and {len(balanced_valid_df)} validation samples from cache.")
+            return balanced_train_df, balanced_valid_df
+            
+        raw_path = os.path.join(dataset_dir, "train.csv")
+        nrows = 100000
+
+    elif split == "test":
+        clean_test_path = os.path.join(dataset_dir, "cleaned_test.csv")
+        if os.path.exists(clean_test_path):
+            logger.info(f"Existing cleaned test dataset found in {dataset_dir}. Loading it directly...")
+            test_df = pd.read_csv(clean_test_path)
+            logger.info(f"Loaded {len(test_df)} test samples from cache.")
+            return test_df
+            
+        raw_path = os.path.join(dataset_dir, "test.csv")
+        nrows = 10000
+    
+    else:
+        raise ValueError(f"Invalid split name '{split}'. Supported splits are 'train' or 'test'.")
+
+    logger.info(f"Loading first 2 rows of '{raw_path}' to infer datatypes...")
+    temp_dataset_df = pd.read_csv(raw_path, nrows=2, low_memory=True, memory_map=True)
     
     mapdtype = {'int64': 'int32', 'float64':'float32'}
     dataset_dtypes = list(temp_dataset_df.dtypes.apply(str).replace(mapdtype))
     dataset_dtypes = {key: value for (key, value) in enumerate(dataset_dtypes)}
 
-    nrows = 10000 if test else 100000
-    logger.info(f"Loading {nrows} rows from '{dataset_path}' with explicit datatypes...")
-    dataset_df = pd.read_csv(dataset_path, nrows=nrows, low_memory=True, memory_map=True, dtype=dataset_dtypes)
+    logger.info(f"Loading {nrows} rows from '{raw_path}' with explicit datatypes...")
+    dataset_df = pd.read_csv(raw_path, nrows=nrows, low_memory=True, memory_map=True, dtype=dataset_dtypes)
 
-    if test:
+    if split == "test":
+        logger.info(f"Saving cleaned test dataset to {dataset_dir}...")
+        dataset_df.to_csv(clean_test_path, index=False)
         return dataset_df
 
     logger.info(f"Loaded {len(dataset_df)} rows. Filtering toxic vs safe comments...")
@@ -44,6 +78,11 @@ def load_dataset(dataset_path:str, test=False):
     balanced_train_df = balanced_train_df[2000:]
     
     logger.info(f"Dataset preparation complete: {len(balanced_train_df)} training samples, {len(balanced_valid_df)} validation samples.")
+    
+    logger.info(f"Saving balanced datasets to {dataset_dir}...")
+    balanced_train_df.to_csv(clean_train_path, index=False)
+    balanced_valid_df.to_csv(clean_valid_path, index=False)
+    
     return balanced_train_df, balanced_valid_df
 
 
