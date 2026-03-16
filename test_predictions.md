@@ -3,301 +3,282 @@
 ## 1. Validation Set (With True Labels)
 > **Note:** The validation set contains true ground-truth targets for Toxicity and Engagement.
 
-### Sample ID: `276010`
+### Sample ID: `329724`
 **Comment:**
-> “So, do you think it would be acceptable for a woman to proposition someone for sex, strip down and lather themselves in soap?” 
-> That sounds disgusting! You're sick!
+> Obama has a double standard for everything. He has a big hypocrite. Only 6 more months and I want have to look at his ugly mug.
 
 - **True Toxicity:** Toxic
 - **True Engagement:** Ignored
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | **0.9029** | 0.3503 |
-| BasicMoE | **0.5110** | **0.5052** |
-| BasicMMoE | **0.5373** | 0.4712 |
+| SharedBottomModel | **0.8479** | 0.3724 |
+| BasicMoE | **0.5148** | **0.5061** |
+| BasicMMoE | **0.5012** | 0.4895 |
 
 ---
 
-### Sample ID: `343297`
+### Sample ID: `336583`
 **Comment:**
-> "I shot a man in Reno, just to watch him die." Jackass.
-
-- **True Toxicity:** Toxic
-- **True Engagement:** Clicked
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | **0.5810** | 0.4149 |
-| BasicMoE | **0.5045** | **0.5109** |
-| BasicMMoE | **0.5210** | 0.4751 |
-
----
-
-### Sample ID: `319574`
-**Comment:**
-> It is important to remind people why such shameful behavior such as occurred in Toksook Bay is a violation of federal law.
-> 
-> Numerous whale species are endangered because of the behavior of humans.  Treaties have been signed by the US and other nations to prevent the EXTINCTION of whales.  When outlaws decided to go kill whales other nations can justify this bad behavior and declare that they too, have a right to continue killing whales- until they go extinct.
-> 
-> The Northern Right Whale, the Southern Right Whale, the Bowhead Whale, the Fin Whale, the Sei Whale, the Vaquita Whale, the Baiji Whale, the Sperm Whale, and the Humpback Whale are ALL ENDANGERED.
-> 
-> Some of these species only have a few hundred living members left.
-> 
-> Those who killed this endangered whale must be prosecuted.
-
-- **True Toxicity:** Safe
-- **True Engagement:** Clicked
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | **0.6839** | 0.4740 |
-| BasicMoE | 0.4965 | **0.5052** |
-| BasicMMoE | **0.5162** | 0.4771 |
-
----
-
-### Sample ID: `275857`
-**Comment:**
-> NE Portlander wasn't talking about the obsession with "Authentic Portland" Or stupid Old vs New Portland.  But the rapidly rising obesity rates in the city.
+> This show stinks to high heaven and the Browns stink also
 
 - **True Toxicity:** Toxic
 - **True Engagement:** Ignored
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | **0.7387** | 0.2228 |
-| BasicMoE | **0.5086** | **0.5003** |
-| BasicMMoE | **0.5279** | 0.4692 |
+| SharedBottomModel | **0.6507** | 0.3371 |
+| BasicMoE | **0.5120** | **0.5014** |
+| BasicMMoE | 0.4969 | 0.4898 |
 
 ---
 
-### Sample ID: `282022`
+### Sample ID: `363071`
 **Comment:**
-> Yeah, I see Russia, like a drunk and dangerous snow machiner buzzing Iditarod mushers. Very tRUMP & cRUSE like of you, Mr. Putin.
-
-- **True Toxicity:** Toxic
-- **True Engagement:** Ignored
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | **0.7940** | 0.4905 |
-| BasicMoE | **0.5049** | **0.5085** |
-| BasicMMoE | **0.5247** | 0.4775 |
-
----
-
-### Sample ID: `333450`
-**Comment:**
-> Mr. Severson,
-> 
-> Thank you for your service.  Both as a soldier, and as a warrior for Veterans in Alaska.
-> 
-> And, thank you for writing this piece.
-
-- **True Toxicity:** Safe
-- **True Engagement:** Ignored
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | 0.0366 | 0.4605 |
-| BasicMoE | 0.4668 | **0.5108** |
-| BasicMMoE | 0.4820 | 0.4778 |
-
----
-
-### Sample ID: `246099`
-**Comment:**
-> Drinking lots of beer?
-
-- **True Toxicity:** Safe
-- **True Engagement:** Ignored
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | 0.2706 | 0.3007 |
-| BasicMoE | 0.4801 | **0.5044** |
-| BasicMMoE | 0.4926 | 0.4659 |
-
----
-
-### Sample ID: `287123`
-**Comment:**
-> Majority leader John Coghill, R-North Pole. “Everyone wants their stuff to happen, right?”
-> 
-> How about the real issues, Coghill? Idiots.
-
-- **True Toxicity:** Toxic
-- **True Engagement:** Ignored
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | 0.4904 | 0.4178 |
-| BasicMoE | 0.4967 | **0.5043** |
-| BasicMMoE | **0.5203** | 0.4764 |
-
----
-
-### Sample ID: `308550`
-**Comment:**
-> I'm glad we are seeing some blowback on these events. Some of these "charity" events are complete nonsense.
+> Leave me out of your "we".  I have not voted for that clown for a lot of years.
 
 - **True Toxicity:** Toxic
 - **True Engagement:** Clicked
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.2812 | 0.4783 |
-| BasicMoE | 0.4832 | **0.5085** |
-| BasicMMoE | **0.5065** | 0.4783 |
+| SharedBottomModel | **0.8963** | 0.3406 |
+| BasicMoE | **0.5293** | **0.5063** |
+| BasicMMoE | **0.5065** | 0.4890 |
 
 ---
 
-### Sample ID: `302435`
+### Sample ID: `283812`
 **Comment:**
-> TRUMP  2K16!!!
+> Alaska's national embarrassment spouts nonsense again. Thanks Bible Barbie.
+
+- **True Toxicity:** Toxic
+- **True Engagement:** Clicked
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | **0.8314** | **0.5728** |
+| BasicMoE | **0.5203** | **0.5168** |
+| BasicMMoE | 0.4960 | 0.4953 |
+
+---
+
+### Sample ID: `312383`
+**Comment:**
+> This has been an ongoing issue and will not be solved until you have the systems in place to identify the individual needs of those on the street.  Many are self induced as we all know and many don't want you meddling in their business. I have a hard time believing any of the sign holders would willingly get into a muni van to go work.  It will be more like "take a hike buddy I don't want your work I make plenty right here"!
+
+- **True Toxicity:** Safe
+- **True Engagement:** Ignored
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | 0.1407 | 0.4510 |
+| BasicMoE | 0.4876 | **0.5095** |
+| BasicMMoE | 0.4779 | 0.4931 |
+
+---
+
+### Sample ID: `282237`
+**Comment:**
+> Why, with a theatrical version in a park of course. :) https://www.youtube.com/watch?v=trHzYyuRrCw
+
+- **True Toxicity:** Safe
+- **True Engagement:** Ignored
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | 0.2710 | 0.3369 |
+| BasicMoE | 0.4922 | **0.5074** |
+| BasicMMoE | 0.4823 | 0.4920 |
+
+---
+
+### Sample ID: `266259`
+**Comment:**
+> I posted national data in response to your assertions about national polls...that data contradicted your assertions...so now you switch to Oregon...and add in personal insults.
+> Your ignorance regarding civil discussion is profound, and your arrogance is over the top.
+
+- **True Toxicity:** Toxic
+- **True Engagement:** Ignored
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | **0.7261** | 0.1912 |
+| BasicMoE | **0.5178** | 0.4961 |
+| BasicMMoE | 0.4995 | 0.4800 |
+
+---
+
+### Sample ID: `263636`
+**Comment:**
+> "...and Gollum kneeled at Frodo's feet, pawing at his knees, hissing 'Nice massssster..."
+
+- **True Toxicity:** Safe
+- **True Engagement:** Ignored
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | 0.1363 | 0.3988 |
+| BasicMoE | 0.4935 | **0.5071** |
+| BasicMMoE | 0.4754 | 0.4917 |
+
+---
+
+### Sample ID: `277271`
+**Comment:**
+> wondering if Rebecka Logan and Kara Moriarty were on the second floor with their i phones,... connected to Chenaults?
 
 - **True Toxicity:** Safe
 - **True Engagement:** Clicked
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | **0.7191** | 0.3789 |
-| BasicMoE | **0.5003** | **0.5038** |
-| BasicMMoE | **0.5166** | 0.4732 |
+| SharedBottomModel | 0.0266 | 0.2694 |
+| BasicMoE | 0.4662 | 0.4950 |
+| BasicMMoE | 0.4596 | 0.4861 |
+
+---
+
+### Sample ID: `253697`
+**Comment:**
+> Their right is to break into other peoples homes and steal those things. No sense burdening the taxpayer anymore than free room and board. as for their drugs, that's what professionally begging on street corners is for. They need a job.
+
+- **True Toxicity:** Safe
+- **True Engagement:** Ignored
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | **0.6168** | **0.5412** |
+| BasicMoE | **0.5078** | **0.5108** |
+| BasicMMoE | 0.4954 | 0.4961 |
 
 ---
 
 ## 2. True Test Set (Inference Only)
 > **Note:** The Kaggle test set does *not* contain true labels. These metrics represent raw inference probabilities.
 
-### Sample ID: `7101679`
+### Sample ID: `7103696`
 **Comment:**
-> "I just want to get rail done no matter what the consequences are." Caldwell is dangerous and wants us to pay for his ineptness and ego. Tear it down.
+> A letter of reprimand would have been more appropriate.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.3344 | **0.6121** |
-| BasicMoE | 0.4863 | **0.5153** |
-| BasicMMoE | **0.5111** | 0.4847 |
+| SharedBottomModel | 0.3896 | 0.4050 |
+| BasicMoE | 0.4951 | **0.5078** |
+| BasicMMoE | 0.4842 | 0.4910 |
 
 ---
 
-### Sample ID: `7102988`
+### Sample ID: `7104876`
 **Comment:**
-> Just because armed people (victims, witnesses, and bystanders alike) couldn't have prevented or mitigated this particular shooting doesn't mean the notion is invalid in countless other scenarios.
+> Not taking anything from clarke but enough about clarke - great player but also overrated by leaf fans
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.3067 | 0.4541 |
-| BasicMoE | 0.4920 | **0.5066** |
-| BasicMMoE | 0.4982 | 0.4783 |
+| SharedBottomModel | 0.0706 | 0.2501 |
+| BasicMoE | 0.4752 | 0.4987 |
+| BasicMMoE | 0.4701 | 0.4853 |
 
 ---
 
-### Sample ID: `7102773`
+### Sample ID: `7105482`
 **Comment:**
-> You are looking at the past with rose-colored glasses. When the Irish Poles and Jews first arrived, they were not considered to be "from the highly educated classes of Europe, noted scholars and business people." The reaction to them was just as full of fear-mongering and ignorance as the reaction to today's immigrants.
+> My take away from the author seems different than most here but here we go ....
+> Peter Stockland writes to further his religious beliefs and equates "freedom" with the pre-eminence of religion over state.  He quotes a theology friend "the freedoms of religion and conscience are and must be the first freedoms to which all others are bound."  Whoa there mister!  Conscience yes, but after that we are supposed to have an overriding principle of the separation of church and state in our modern country and for darn good reasons too.  Organized religions, as presided over by their 'leaders' and allies have too often been the creators and users of oppression, subjugation, and many of the wars over the past two thousand years. Today they continue to provide the tools of propaganda for whomever wields power, be that a vice president, an ayatollah, or the power blocs behind them.  I can't speak for their reasons but the citizens VOTED.  It seems Peter prefers religious groups have the final say.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | **0.6100** | 0.2914 |
-| BasicMoE | **0.5002** | **0.5047** |
-| BasicMMoE | **0.5218** | 0.4733 |
+| SharedBottomModel | 0.1405 | 0.4662 |
+| BasicMoE | 0.4871 | **0.5117** |
+| BasicMMoE | 0.4778 | 0.4927 |
 
 ---
 
-### Sample ID: `7104764`
+### Sample ID: `7104257`
 **Comment:**
-> Thanks for the wit!  Snorted out loud :)
+> What did P T Barnum say?
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | **0.5479** | 0.2252 |
-| BasicMoE | **0.5076** | 0.4979 |
-| BasicMMoE | **0.5171** | 0.4638 |
+| SharedBottomModel | 0.1729 | 0.2699 |
+| BasicMoE | 0.4881 | **0.5039** |
+| BasicMMoE | 0.4800 | 0.4892 |
 
 ---
 
-### Sample ID: `7104131`
+### Sample ID: `7103863`
 **Comment:**
-> THE DEMOCRAT PARTY IS THE PARTY OF GREED FROM TOP TO BOTTOM . 
-> IT IS UNFORTUNATE , BUT GREED SELLS THESE DAYS . 
-> ~
-> IF WE ALL VOTED FOR THE GOOD OF THE COUNTRY INSTEAD OF THE GOOD OF OURSELVES , 
-> THE COUNTRY WOULD BE PROSPEROUS FOR EVERYONE .
+> I would have laughed if I'd finished crying over the other articles today about Trudeau's looming tax bombs.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.3642 | 0.3917 |
-| BasicMoE | 0.4888 | **0.5066** |
-| BasicMMoE | **0.5177** | 0.4773 |
+| SharedBottomModel | 0.4821 | 0.3917 |
+| BasicMoE | **0.5010** | **0.5047** |
+| BasicMMoE | 0.4913 | 0.4926 |
 
 ---
 
-### Sample ID: `7103625`
+### Sample ID: `7106530`
 **Comment:**
-> Wow...That's a beautiful display of human awareness. Funny...Drumpf didn't feel he was humiliating anyone either. I see a pattern developing.
+> If you don’t think Vegas will come back to earth I have a bridge in Brooklyn to sell you.
 > 
-> I await your dismissive, divisive, fact free, ad homonym infused faux anger response as always.
+> Your “yesterday’s stuff” is just inane and devoid of any basis in reality in regard to the current edition of the Leafs. And the one UFA vet they signed is doing just fine and seems badly missed by his struggling former team.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | **0.7833** | 0.4252 |
-| BasicMoE | 0.4989 | **0.5055** |
-| BasicMMoE | **0.5226** | 0.4741 |
+| SharedBottomModel | 0.1488 | 0.2980 |
+| BasicMoE | 0.4932 | **0.5007** |
+| BasicMMoE | 0.4755 | 0.4880 |
 
 ---
 
-### Sample ID: `7104924`
+### Sample ID: `7103939`
 **Comment:**
-> Why don't they all just quit and go to work at Hooters?
+> Or, in the case of Clinton, a centrist.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | **0.7937** | 0.3073 |
-| BasicMoE | **0.5129** | **0.5095** |
-| BasicMMoE | **0.5299** | 0.4733 |
+| SharedBottomModel | 0.2904 | 0.4262 |
+| BasicMoE | 0.4983 | **0.5080** |
+| BasicMMoE | 0.4795 | 0.4896 |
 
 ---
 
-### Sample ID: `7103847`
+### Sample ID: `7099785`
 **Comment:**
-> Coaches who engage in emotional rants along the sidelines embarrass themselves, their players and their schools.  There is absolutely nothing to be gained by this behavior.  It teaches poor sportsmanship and encourages players to ultimately to the same.  Coach needs to learn how to dial it down.
+> Doesn't change the fact that he was dealt the worst hand of any incoming President ever. Besides the blatant racism he has faced and the disastrous economy he inherited, he has led the country with class and intelligence. Is he perfect? Of course not. But this Republican rhetoric that continually claims he has been a "disaster" is just "trumped" up hot air. Are we better off than we were 8 years ago? Without question.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.3181 | 0.3034 |
-| BasicMoE | 0.4835 | **0.5007** |
-| BasicMMoE | **0.5046** | 0.4705 |
+| SharedBottomModel | 0.4700 | 0.4101 |
+| BasicMoE | **0.5111** | **0.5073** |
+| BasicMMoE | 0.4877 | 0.4920 |
 
 ---
 
-### Sample ID: `7103126`
+### Sample ID: `7097637`
 **Comment:**
-> It's a hit job to be sure, but this isn't the 50s or 60s where we only have one source of information available.
-> 
-> People today can see the  media bias for what it is, as evidenced by this last election.
-> 
-> Expect more people to wake up in the coming years. Their stranglehold on information is over.
+> 'Have nothing'? We have both houses, the Presidency and the courts.  I would call that a 'full house'!
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.0749 | 0.4561 |
-| BasicMoE | 0.4713 | **0.5101** |
-| BasicMMoE | 0.4982 | 0.4806 |
+| SharedBottomModel | 0.0751 | 0.3674 |
+| BasicMoE | 0.4848 | **0.5113** |
+| BasicMMoE | 0.4717 | 0.4925 |
 
 ---
 
-### Sample ID: `7104728`
+### Sample ID: `7106695`
 **Comment:**
-> As expected.  And most of them are back before the day is out.
+> Eric
+> Cut the guy a little slack, he's so giddy now thinking he's won, it'll take 6 months or a year for the reality of the what's happening to the country to sink in.
+> charlie
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.1662 | 0.3574 |
-| BasicMoE | 0.4822 | **0.5064** |
-| BasicMMoE | 0.4983 | 0.4711 |
+| SharedBottomModel | 0.4631 | **0.5046** |
+| BasicMoE | **0.5070** | **0.5148** |
+| BasicMMoE | 0.4880 | 0.4969 |
 
 ---
 

@@ -33,7 +33,7 @@ class GatingNetwork(nn.Module):
 
         hidden_layers = []
         for _ in range(num_hidden_dim):
-            hidden_layers.extend([nn.Dropout(0.5), nn.Linear(128, 128), nn.ReLU()])
+            hidden_layers.extend([nn.Linear(128, 128), nn.Dropout(0.5), nn.ReLU()])
             
         gate[2:2] = hidden_layers
         self.gate = nn.Sequential(*gate)
@@ -62,7 +62,7 @@ class ExpertNetwork(nn.Module):
 
         hidden_layers = []
         for _ in range(num_hidden_dim):
-            hidden_layers.extend([nn.Dropout(0.5), nn.Linear(hidden_dim, hidden_dim), nn.ReLU()])
+            hidden_layers.extend([nn.Linear(hidden_dim, hidden_dim), nn.Dropout(0.5), nn.ReLU()])
             
         expert[2:2] = hidden_layers
         self.expert = nn.Sequential(*expert)

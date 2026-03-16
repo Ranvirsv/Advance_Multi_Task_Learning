@@ -12,3 +12,16 @@
 2026-03-11 12:58:56,754 - BasicMMoE - INFO - Epoch 5/5 - Train Loss: 0.9302, Valid Loss: 1.1417
 2026-03-11 12:58:56,754 - BasicMMoE - INFO - No improvement in validation loss for 2 epoch(s).
 2026-03-11 12:58:56,754 - BasicMMoE - INFO - Training completed.
+2026-03-16 17:52:10,552 - BasicMMoE - INFO - --------------------------------------------------
+2026-03-16 17:52:10,552 - BasicMMoE - INFO - Started Training: BasicMMoE
+2026-03-16 17:52:10,552 - BasicMMoE - INFO - --------------------------------------------------
+2026-03-16 17:52:12,821 - BasicMMoE - INFO - Epoch 1/5 - Train Loss: 1.1659, Valid Loss: 1.1029
+2026-03-16 17:52:12,844 - BasicMMoE - INFO - Saved new best model with validation loss: 1.1029
+2026-03-16 17:52:15,209 - BasicMMoE - INFO - Epoch 2/5 - Train Loss: 1.0865, Valid Loss: 1.1048
+2026-03-16 17:52:15,210 - BasicMMoE - INFO - No improvement in validation loss for 1 epoch(s).
+2026-03-16 17:52:17,496 - BasicMMoE - INFO - Epoch 3/5 - Train Loss: 1.0434, Valid Loss: 1.1063
+2026-03-16 17:52:17,496 - BasicMMoE - INFO - No improvement in validation loss for 2 epoch(s).
+2026-03-16 17:52:19,776 - BasicMMoE - INFO - Epoch 4/5 - Train Loss: 0.9951, Valid Loss: 1.1090
+2026-03-16 17:52:19,776 - BasicMMoE - INFO - No improvement in validation loss for 3 epoch(s).
+2026-03-16 17:52:19,776 - BasicMMoE - INFO - Early stopping triggered after 4 epochs.
+2026-03-16 17:52:19,776 - BasicMMoE - INFO - Training completed.
