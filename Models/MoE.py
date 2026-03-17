@@ -45,19 +45,16 @@ class GatingNetwork(nn.Module):
 class ExpertNetwork(nn.Module):
     def __init__(self, input_dim, output_dim, hidden_dim=128, num_hidden_dim=0, activation='relu'):
         super().__init__()
-        fx = nn.ReLU() if activation == 'relu' else nn.Sigmoid()
         if num_hidden_dim==0:
             self.expert = nn.Sequential(
-                nn.Linear(input_dim, output_dim),
-                fx
+                nn.Linear(input_dim, output_dim)
             )
             return 
             
         expert = [
             nn.Linear(input_dim, hidden_dim), 
             nn.ReLU(),
-            nn.Linear(hidden_dim, output_dim),
-            fx
+            nn.Linear(hidden_dim, output_dim)
         ]
 
         hidden_layers = []
@@ -110,7 +107,7 @@ class BasicMoE(nn.Module):
             expert(x) for expert in self.experts
         ]
         expert_out = torch.stack(expert_out_list, dim=1)
-        model_out = torch.sum(expert_weight @ expert_out, dim=1)
+        model_out = torch.sum(expert_weight.unsqueeze(-1) * expert_out, dim=1)
 
         engagement_out = self.engagement_head(model_out)
         toxicity_out = self.toxicity_head(model_out)

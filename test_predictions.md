@@ -3,282 +3,303 @@
 ## 1. Validation Set (With True Labels)
 > **Note:** The validation set contains true ground-truth targets for Toxicity and Engagement.
 
-### Sample ID: `329724`
+### Sample ID: `303719`
 **Comment:**
-> Obama has a double standard for everything. He has a big hypocrite. Only 6 more months and I want have to look at his ugly mug.
-
-- **True Toxicity:** Toxic
-- **True Engagement:** Ignored
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | **0.8479** | 0.3724 |
-| BasicMoE | **0.5148** | **0.5061** |
-| BasicMMoE | **0.5012** | 0.4895 |
-
----
-
-### Sample ID: `336583`
-**Comment:**
-> This show stinks to high heaven and the Browns stink also
-
-- **True Toxicity:** Toxic
-- **True Engagement:** Ignored
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | **0.6507** | 0.3371 |
-| BasicMoE | **0.5120** | **0.5014** |
-| BasicMMoE | 0.4969 | 0.4898 |
-
----
-
-### Sample ID: `363071`
-**Comment:**
-> Leave me out of your "we".  I have not voted for that clown for a lot of years.
-
-- **True Toxicity:** Toxic
-- **True Engagement:** Clicked
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | **0.8963** | 0.3406 |
-| BasicMoE | **0.5293** | **0.5063** |
-| BasicMMoE | **0.5065** | 0.4890 |
-
----
-
-### Sample ID: `283812`
-**Comment:**
-> Alaska's national embarrassment spouts nonsense again. Thanks Bible Barbie.
-
-- **True Toxicity:** Toxic
-- **True Engagement:** Clicked
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | **0.8314** | **0.5728** |
-| BasicMoE | **0.5203** | **0.5168** |
-| BasicMMoE | 0.4960 | 0.4953 |
-
----
-
-### Sample ID: `312383`
-**Comment:**
-> This has been an ongoing issue and will not be solved until you have the systems in place to identify the individual needs of those on the street.  Many are self induced as we all know and many don't want you meddling in their business. I have a hard time believing any of the sign holders would willingly get into a muni van to go work.  It will be more like "take a hike buddy I don't want your work I make plenty right here"!
+> Do you have a point to this? I see a lot of local businesses.
 
 - **True Toxicity:** Safe
 - **True Engagement:** Ignored
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.1407 | 0.4510 |
-| BasicMoE | 0.4876 | **0.5095** |
-| BasicMMoE | 0.4779 | 0.4931 |
+| SharedBottomModel | 0.0866 | 0.3414 |
+| BasicMoE | 0.0737 | 0.3757 |
+| BasicMMoE | 0.0413 | 0.3872 |
 
 ---
 
-### Sample ID: `282237`
+### Sample ID: `342457`
 **Comment:**
-> Why, with a theatrical version in a park of course. :) https://www.youtube.com/watch?v=trHzYyuRrCw
+> I hiked a section of this about 50 years ago.  There was an abandoned geared locomotive on one of the sidings.  Wonder what ever happened to it?
 
 - **True Toxicity:** Safe
 - **True Engagement:** Ignored
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.2710 | 0.3369 |
-| BasicMoE | 0.4922 | **0.5074** |
-| BasicMMoE | 0.4823 | 0.4920 |
+| SharedBottomModel | 0.2176 | 0.4446 |
+| BasicMoE | 0.2147 | 0.4241 |
+| BasicMMoE | 0.1899 | 0.4165 |
 
 ---
 
-### Sample ID: `266259`
+### Sample ID: `298567`
 **Comment:**
-> I posted national data in response to your assertions about national polls...that data contradicted your assertions...so now you switch to Oregon...and add in personal insults.
-> Your ignorance regarding civil discussion is profound, and your arrogance is over the top.
-
-- **True Toxicity:** Toxic
-- **True Engagement:** Ignored
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | **0.7261** | 0.1912 |
-| BasicMoE | **0.5178** | 0.4961 |
-| BasicMMoE | 0.4995 | 0.4800 |
-
----
-
-### Sample ID: `263636`
-**Comment:**
-> "...and Gollum kneeled at Frodo's feet, pawing at his knees, hissing 'Nice massssster..."
-
-- **True Toxicity:** Safe
-- **True Engagement:** Ignored
-
-| Model | Toxicity Prob | Engagement Prob |
-|-------|---------------|-----------------|
-| SharedBottomModel | 0.1363 | 0.3988 |
-| BasicMoE | 0.4935 | **0.5071** |
-| BasicMMoE | 0.4754 | 0.4917 |
-
----
-
-### Sample ID: `277271`
-**Comment:**
-> wondering if Rebecka Logan and Kara Moriarty were on the second floor with their i phones,... connected to Chenaults?
+> SO- YOU'RE the headline writer at the RG!
 
 - **True Toxicity:** Safe
 - **True Engagement:** Clicked
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.0266 | 0.2694 |
-| BasicMoE | 0.4662 | 0.4950 |
-| BasicMMoE | 0.4596 | 0.4861 |
+| SharedBottomModel | 0.2964 | 0.2388 |
+| BasicMoE | 0.2477 | 0.2885 |
+| BasicMMoE | 0.2630 | 0.2586 |
 
 ---
 
-### Sample ID: `253697`
+### Sample ID: `312849`
 **Comment:**
-> Their right is to break into other peoples homes and steal those things. No sense burdening the taxpayer anymore than free room and board. as for their drugs, that's what professionally begging on street corners is for. They need a job.
+> Right now I wished I was Kim Jung Il, and I'd stand Hawker, Chenault, K. Olson, Johnson, and the rest of them, up against  the wall and let the firing squad do their job, as these piece's of shite, have put us in this mess and have done nothing about it, except to drop to their knees in front of their true masters, wipe off their chins and ask for more.....
+
+- **True Toxicity:** Toxic
+- **True Engagement:** Ignored
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | **0.5664** | 0.4993 |
+| BasicMoE | 0.3787 | **0.5332** |
+| BasicMMoE | 0.4917 | **0.5254** |
+
+---
+
+### Sample ID: `296865`
+**Comment:**
+> Corrupt Bastards Community™. 
+> 
+> This must be part of the rebranding effort.
+
+- **True Toxicity:** Toxic
+- **True Engagement:** Clicked
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | **0.9172** | 0.4131 |
+| BasicMoE | **0.9249** | **0.5079** |
+| BasicMMoE | **0.9244** | 0.4864 |
+
+---
+
+### Sample ID: `286697`
+**Comment:**
+> Drake is 60 years old and has never served in any sort of civic capacity, much less held any position in government, let alone been a Springfield city councilor.   A man who has no experience at all in civic matters after living for six decades, and never done anything previously to serve our community,  suddenly now wants to be our Mayor?    That is such a joke.
+> 
+> The fact that his campaign is focusing so much on Springfield's schools shows how totally ignorant he is about how government works.   The City government plays no role at all with the schools in Springfield.   They are operated by the Springfield School District, which is entirely independent of the city government.   The School District gets its funding from local property taxes and from the state government in Salem, neither of which the city of Springfield has any control over whatsoever.   And yet, he criticizes Mayor Lundberg for the low graduation rate of Springfield's high schools.
+> 
+> What a ridiculous campaign.
+
+- **True Toxicity:** Toxic
+- **True Engagement:** Ignored
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | 0.4670 | 0.3802 |
+| BasicMoE | 0.4257 | 0.4598 |
+| BasicMMoE | 0.4580 | 0.4191 |
+
+---
+
+### Sample ID: `304013`
+**Comment:**
+> I beg to differ, LD.
+> 
+> Bush was the worst thing to happen to this nation since Ronald the clown Reagan. Both were clueless morons that caused massive damage to our country.
+
+- **True Toxicity:** Toxic
+- **True Engagement:** Ignored
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | **0.9491** | 0.3561 |
+| BasicMoE | **0.9454** | 0.4268 |
+| BasicMMoE | **0.9792** | 0.3933 |
+
+---
+
+### Sample ID: `343153`
+**Comment:**
+> Redwop: I paid it before the oil period and I would pay it now. And the school tax. More importantly, imported employees who pay nothing for the services they receive when they are here will pay it, too. The takers need to begin becoming the givers now.
 
 - **True Toxicity:** Safe
 - **True Engagement:** Ignored
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | **0.6168** | **0.5412** |
-| BasicMoE | **0.5078** | **0.5108** |
-| BasicMMoE | 0.4954 | 0.4961 |
+| SharedBottomModel | 0.2733 | 0.3931 |
+| BasicMoE | 0.2420 | 0.4215 |
+| BasicMMoE | 0.1962 | 0.4224 |
+
+---
+
+### Sample ID: `243426`
+**Comment:**
+> That’s not very civil, claiming to know what I think and suggesting that I use crayons.
+> 
+> The topic is voting in Oregon, and we’re not discussing what other states may do. We don’t require photo ID, and we don’t have polling places to limit the number of. As I wrote before, it’s easy to register and easy to vote. We didn’t need a motor voter law.
+> 
+> Back in our days of polling places, they would sometimes hand out “I voted” stickers. That would be something to take pride in: I studied the issues and candidates to some degree and made an educated choice, then went to the polling place and waited in line to make that choice.
+> 
+> Nowadays, you can simply print at home, “I filled in the arrows.” The less literate might scribble “I filed in the eros” on a piece of paper and Scotch-tape it to their T-shirt. They may take a lot of pride in knowing that filling in the arrow next to the D means they can keep their Oregon Trail card. At least that’s what the league of women voters person told them.
+
+- **True Toxicity:** Safe
+- **True Engagement:** Ignored
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | **0.6450** | 0.2515 |
+| BasicMoE | **0.6172** | 0.3551 |
+| BasicMMoE | **0.5129** | 0.2857 |
+
+---
+
+### Sample ID: `246297`
+**Comment:**
+> The point is: Imago Dei has doctrines that are repugnant to me and other Portlanders.  We hear the all-male "Elders" arguing for 1. female submission 2. unmarried households are living in sin 3. gay sex is sin.
+> 
+> This is not a flawed doctrine- it is a homophobic misogynist doctrine that your evangelical church wants to spread.  You are no different from a Santorum supporter except that the Santorum supporter is more honest and will not deny their church's doctrine.
+
+- **True Toxicity:** Toxic
+- **True Engagement:** Clicked
+
+| Model | Toxicity Prob | Engagement Prob |
+|-------|---------------|-----------------|
+| SharedBottomModel | **0.7006** | 0.3379 |
+| BasicMoE | **0.7098** | 0.3692 |
+| BasicMMoE | **0.7337** | 0.3501 |
 
 ---
 
 ## 2. True Test Set (Inference Only)
 > **Note:** The Kaggle test set does *not* contain true labels. These metrics represent raw inference probabilities.
 
-### Sample ID: `7103696`
+### Sample ID: `7098420`
 **Comment:**
-> A letter of reprimand would have been more appropriate.
+> Finally, something refreshingly honest in the 'pages' of Civil Beat.  Nice job.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.3896 | 0.4050 |
-| BasicMoE | 0.4951 | **0.5078** |
-| BasicMMoE | 0.4842 | 0.4910 |
+| SharedBottomModel | 0.2425 | 0.2142 |
+| BasicMoE | 0.2022 | 0.2870 |
+| BasicMMoE | 0.2278 | 0.2246 |
 
 ---
 
-### Sample ID: `7104876`
+### Sample ID: `7105584`
 **Comment:**
-> Not taking anything from clarke but enough about clarke - great player but also overrated by leaf fans
+> I don't believe that in all of Canada's history it has had a less successful group of immigrants/refugees than those from Somalia. The economic success of those from this country is abysmal, and a shockingly high number are involved in violent crime in Canada. Why on Earth would we want more of them?
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.0706 | 0.2501 |
-| BasicMoE | 0.4752 | 0.4987 |
-| BasicMMoE | 0.4701 | 0.4853 |
+| SharedBottomModel | 0.1984 | 0.3146 |
+| BasicMoE | 0.1626 | 0.3294 |
+| BasicMMoE | 0.1998 | 0.3382 |
 
 ---
 
-### Sample ID: `7105482`
+### Sample ID: `7106505`
 **Comment:**
-> My take away from the author seems different than most here but here we go ....
-> Peter Stockland writes to further his religious beliefs and equates "freedom" with the pre-eminence of religion over state.  He quotes a theology friend "the freedoms of religion and conscience are and must be the first freedoms to which all others are bound."  Whoa there mister!  Conscience yes, but after that we are supposed to have an overriding principle of the separation of church and state in our modern country and for darn good reasons too.  Organized religions, as presided over by their 'leaders' and allies have too often been the creators and users of oppression, subjugation, and many of the wars over the past two thousand years. Today they continue to provide the tools of propaganda for whomever wields power, be that a vice president, an ayatollah, or the power blocs behind them.  I can't speak for their reasons but the citizens VOTED.  It seems Peter prefers religious groups have the final say.
+> Good to see even the liberals see this for the waste of money it is below. But they seem to not get this is the current administration's fault.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.1405 | 0.4662 |
-| BasicMoE | 0.4871 | **0.5117** |
-| BasicMMoE | 0.4778 | 0.4927 |
+| SharedBottomModel | 0.4184 | **0.5918** |
+| BasicMoE | 0.4003 | **0.6093** |
+| BasicMMoE | 0.4363 | **0.6254** |
 
 ---
 
-### Sample ID: `7104257`
+### Sample ID: `7102321`
 **Comment:**
-> What did P T Barnum say?
+> There is no point in selling assets if they're going to be used to fund ridiculous projects like Scarborough Subway.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.1729 | 0.2699 |
-| BasicMoE | 0.4881 | **0.5039** |
-| BasicMMoE | 0.4800 | 0.4892 |
+| SharedBottomModel | 0.3200 | 0.4100 |
+| BasicMoE | 0.2505 | 0.4352 |
+| BasicMMoE | 0.3307 | 0.4378 |
 
 ---
 
-### Sample ID: `7103863`
+### Sample ID: `7100022`
 **Comment:**
-> I would have laughed if I'd finished crying over the other articles today about Trudeau's looming tax bombs.
+> The most sickening article I have ever read in a Canadian publication.  This clearly draws the line between the takers and contributors.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.4821 | 0.3917 |
-| BasicMoE | **0.5010** | **0.5047** |
-| BasicMMoE | 0.4913 | 0.4926 |
+| SharedBottomModel | **0.6785** | 0.3953 |
+| BasicMoE | **0.5581** | 0.4201 |
+| BasicMMoE | **0.6345** | 0.3725 |
 
 ---
 
-### Sample ID: `7106530`
+### Sample ID: `7103511`
 **Comment:**
-> If you don’t think Vegas will come back to earth I have a bridge in Brooklyn to sell you.
+> Romans 13:1 is "Let everyone be subject to the governing authorities, for there is no authority except that which God has established. The authorities that exist have been established by God.:
 > 
-> Your “yesterday’s stuff” is just inane and devoid of any basis in reality in regard to the current edition of the Leafs. And the one UFA vet they signed is doing just fine and seems badly missed by his struggling former team.
+> So if you lived in North Korea, you would accept Kim Jong Un, since his rule has been established by God.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.1488 | 0.2980 |
-| BasicMoE | 0.4932 | **0.5007** |
-| BasicMMoE | 0.4755 | 0.4880 |
+| SharedBottomModel | 0.0994 | 0.3595 |
+| BasicMoE | 0.0871 | 0.3732 |
+| BasicMMoE | 0.0970 | 0.3409 |
 
 ---
 
-### Sample ID: `7103939`
+### Sample ID: `7106242`
 **Comment:**
-> Or, in the case of Clinton, a centrist.
+> Any evidence of ineptitude and corruption since Kealoha is gone? Unfortunately the mainlanders would not be able to bring both short and long term solutions to the problems we face. Sorry, but your best choice is the only insider.  Her track record and qualifications make her the right choice.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.2904 | 0.4262 |
-| BasicMoE | 0.4983 | **0.5080** |
-| BasicMMoE | 0.4795 | 0.4896 |
+| SharedBottomModel | 0.0807 | 0.3947 |
+| BasicMoE | 0.0860 | 0.4342 |
+| BasicMMoE | 0.0649 | 0.3818 |
 
 ---
 
-### Sample ID: `7099785`
+### Sample ID: `7100372`
 **Comment:**
-> Doesn't change the fact that he was dealt the worst hand of any incoming President ever. Besides the blatant racism he has faced and the disastrous economy he inherited, he has led the country with class and intelligence. Is he perfect? Of course not. But this Republican rhetoric that continually claims he has been a "disaster" is just "trumped" up hot air. Are we better off than we were 8 years ago? Without question.
+> Any process can be improved, even Obama's.  Availability Management 101.
+> So why are you afraid of reviewing if the process that is in place could be improved? What are your concerns for better vetting?
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.4700 | 0.4101 |
-| BasicMoE | **0.5111** | **0.5073** |
-| BasicMMoE | 0.4877 | 0.4920 |
+| SharedBottomModel | 0.0465 | 0.3698 |
+| BasicMoE | 0.0426 | 0.4123 |
+| BasicMMoE | 0.0299 | 0.4011 |
 
 ---
 
-### Sample ID: `7097637`
+### Sample ID: `7102373`
 **Comment:**
-> 'Have nothing'? We have both houses, the Presidency and the courts.  I would call that a 'full house'!
+> Koncerned,
+> Wise words! 
+> Good reminder to everyone to not rush to judgment even when you think you "know it all".
+> The essay by the family was extremely well written, without rushing to conclusions, despite their breaking hearts, they vow to accept what the investigation reveals. 
+> No matter what any of us have to say from our arm chairs, they loved their brother and knew him well. No excuses or blaming, just a lot of love they had for their brother. 
+> Our world needs more folks like them right now.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.0751 | 0.3674 |
-| BasicMoE | 0.4848 | **0.5113** |
-| BasicMMoE | 0.4717 | 0.4925 |
+| SharedBottomModel | 0.1137 | 0.3981 |
+| BasicMoE | 0.1472 | 0.4259 |
+| BasicMMoE | 0.1320 | 0.3872 |
 
 ---
 
-### Sample ID: `7106695`
+### Sample ID: `7102923`
 **Comment:**
-> Eric
-> Cut the guy a little slack, he's so giddy now thinking he's won, it'll take 6 months or a year for the reality of the what's happening to the country to sink in.
-> charlie
+> Protesters should walk the talk by:
+> 1) Opting out of the use of agricultural, medical, transportation and communication products, all of which rely heavily on fossil fuels,
+> 2) Refraining from heating their homes, and
+> 3) Acknowledge their endorsement of shipping fuels by rail.
 
 | Model | Toxicity Prob | Engagement Prob |
 |-------|---------------|-----------------|
-| SharedBottomModel | 0.4631 | **0.5046** |
-| BasicMoE | **0.5070** | **0.5148** |
-| BasicMMoE | 0.4880 | 0.4969 |
+| SharedBottomModel | 0.2087 | 0.4275 |
+| BasicMoE | 0.1978 | 0.4030 |
+| BasicMMoE | 0.1576 | 0.4687 |
 
 ---
 

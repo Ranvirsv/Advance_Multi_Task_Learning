@@ -4,7 +4,7 @@ import torch.nn.functional as F
 from Models.MoE import GatingNetwork, ExpertNetwork
 
 class BasicMMoE(nn.Module):
-    def __init__(self, input_dim, output_dim, num_experts):
+    def __init__(self, input_dim, output_dim, num_experts, temprature=1.0):
         super().__init__()
         
         self.num_experts = num_experts
@@ -14,8 +14,8 @@ class BasicMMoE(nn.Module):
             ]
         )
 
-        self.engagement_gate = GatingNetwork(input_dim, self.num_experts)
-        self.toxicity_gate = GatingNetwork(input_dim, self.num_experts)
+        self.engagement_gate = GatingNetwork(input_dim, self.num_experts, temperature=0.5)
+        self.toxicity_gate = GatingNetwork(input_dim, self.num_experts, temperature=0.5)
 
         # 2. Task Head A: Engagement (Input 128 -> Output 1)
         self.engagement_head = nn.Sequential(
@@ -37,8 +37,8 @@ class BasicMMoE(nn.Module):
             expert(x) for expert in self.experts
         ]
         expert_out = torch.stack(expert_out_list, dim=1)
-        expert_engagement_out = torch.sum(expert_weight_engagement @ expert_out, dim=1)
-        expert_toxicity_out = torch.sum(expert_weight_toxicity @ expert_out, dim=1)
+        expert_engagement_out = torch.sum(expert_weight_engagement.unsqueeze(-1) * expert_out, dim=1)
+        expert_toxicity_out = torch.sum(expert_weight_toxicity.unsqueeze(-1) * expert_out, dim=1)
 
         engagement_out = self.engagement_head(expert_engagement_out)
         toxicity_out = self.toxicity_head(expert_toxicity_out)

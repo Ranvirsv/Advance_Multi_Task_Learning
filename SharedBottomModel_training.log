@@ -54,3 +54,31 @@
 2026-03-16 17:51:59,009 - SharedBottomModel - INFO - Epoch 5/5 - Train Loss: 1.1103, Valid Loss: 1.1093
 2026-03-16 17:51:59,009 - SharedBottomModel - INFO - No improvement in validation loss for 1 epoch(s).
 2026-03-16 17:51:59,009 - SharedBottomModel - INFO - Training completed.
+2026-03-16 20:00:57,847 - SharedBottomModel - INFO - --------------------------------------------------
+2026-03-16 20:00:57,848 - SharedBottomModel - INFO - Started Training: SharedBottomModel
+2026-03-16 20:00:57,848 - SharedBottomModel - INFO - --------------------------------------------------
+2026-03-16 20:00:59,912 - SharedBottomModel - INFO - Epoch 1/5 - Train Loss: 1.2184, Valid Loss: 1.1351
+2026-03-16 20:00:59,925 - SharedBottomModel - INFO - Saved new best model with validation loss: 1.1351
+2026-03-16 20:01:01,608 - SharedBottomModel - INFO - Epoch 2/5 - Train Loss: 1.1302, Valid Loss: 1.1075
+2026-03-16 20:01:01,618 - SharedBottomModel - INFO - Saved new best model with validation loss: 1.1075
+2026-03-16 20:01:03,297 - SharedBottomModel - INFO - Epoch 3/5 - Train Loss: 1.1183, Valid Loss: 1.1041
+2026-03-16 20:01:03,306 - SharedBottomModel - INFO - Saved new best model with validation loss: 1.1041
+2026-03-16 20:01:05,166 - SharedBottomModel - INFO - Epoch 4/5 - Train Loss: 1.1148, Valid Loss: 1.1045
+2026-03-16 20:01:05,167 - SharedBottomModel - INFO - No improvement in validation loss for 1 epoch(s).
+2026-03-16 20:01:06,829 - SharedBottomModel - INFO - Epoch 5/5 - Train Loss: 1.1099, Valid Loss: 1.1015
+2026-03-16 20:01:06,838 - SharedBottomModel - INFO - Saved new best model with validation loss: 1.1015
+2026-03-16 20:01:06,838 - SharedBottomModel - INFO - Training completed.
+2026-03-16 20:08:34,860 - SharedBottomModel - INFO - --------------------------------------------------
+2026-03-16 20:08:34,860 - SharedBottomModel - INFO - Started Training: SharedBottomModel
+2026-03-16 20:08:34,860 - SharedBottomModel - INFO - --------------------------------------------------
+2026-03-16 20:08:36,787 - SharedBottomModel - INFO - Epoch 1/5 - Train Loss: 1.2219, Valid Loss: 1.1295
+2026-03-16 20:08:36,800 - SharedBottomModel - INFO - Saved new best model with validation loss: 1.1295
+2026-03-16 20:08:38,514 - SharedBottomModel - INFO - Epoch 2/5 - Train Loss: 1.1306, Valid Loss: 1.1158
+2026-03-16 20:08:38,524 - SharedBottomModel - INFO - Saved new best model with validation loss: 1.1158
+2026-03-16 20:08:40,453 - SharedBottomModel - INFO - Epoch 3/5 - Train Loss: 1.1183, Valid Loss: 1.1104
+2026-03-16 20:08:40,463 - SharedBottomModel - INFO - Saved new best model with validation loss: 1.1104
+2026-03-16 20:08:42,158 - SharedBottomModel - INFO - Epoch 4/5 - Train Loss: 1.1133, Valid Loss: 1.0983
+2026-03-16 20:08:42,167 - SharedBottomModel - INFO - Saved new best model with validation loss: 1.0983
+2026-03-16 20:08:43,858 - SharedBottomModel - INFO - Epoch 5/5 - Train Loss: 1.1088, Valid Loss: 1.1003
+2026-03-16 20:08:43,858 - SharedBottomModel - INFO - No improvement in validation loss for 1 epoch(s).
+2026-03-16 20:08:43,858 - SharedBottomModel - INFO - Training completed.
