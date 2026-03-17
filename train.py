@@ -11,6 +11,7 @@ from Models.SharedBottomModel import SharedBottomMLT
 from MTLLib.ModelTrainer import ModelTrainer
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
+from MTLLib.MTLLoss import MultiTaskLoss
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -23,7 +24,7 @@ if not logger.handlers:
 
 load_dotenv()
 
-def SharedModelExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device):
+def SharedModelExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device):
     logger.info("-" * 50)
     logger.info("Shared Model Experiment")
     logger.info("-" * 50)
@@ -31,13 +32,14 @@ def SharedModelExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, 
     shared_bottom_model = SharedBottomMLT()
     shared_bottom_model.to(device)
 
-    criterion = [nn.BCELoss(), nn.BCELoss()]
-    optimizer = optim.Adam(shared_bottom_model.parameters(), lr=0.001, weight_decay=0.001)
+    is_regression = torch.tensor([False, False])
+    criterion = MultiTaskLoss(nn.BCELoss(), nn.BCELoss(), is_regression).to(device)
+    optimizer = optim.Adam(list(shared_bottom_model.parameters()) + list(criterion.parameters()), lr=0.001, weight_decay=0.001)
 
     model_trainer = ModelTrainer(shared_bottom_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device, "SharedBottomModel")
     model_trainer.train()
 
-def BasicMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device):
+def BasicMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device):
     logger.info("-" * 50)
     logger.info("BasicMoE Experiment")
     logger.info("-" * 50)
@@ -45,36 +47,38 @@ def BasicMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, tox
     BasicMoE_model = BasicMoE(384, 128, 3)
     BasicMoE_model.to(device)
 
-    criterion = [nn.BCELoss(), nn.BCELoss()]
-    optimizer = optim.Adam(BasicMoE_model.parameters(), lr=0.001, weight_decay=0.001)
+    is_regression = torch.tensor([False, False])
+    criterion = MultiTaskLoss(nn.BCELoss(), nn.BCELoss(), is_regression).to(device)
+    optimizer = optim.Adam(list(BasicMoE_model.parameters()) + list(criterion.parameters()), lr=0.001, weight_decay=0.001)
 
     model_trainer = ModelTrainer(BasicMoE_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device, "BasicMoE")
     model_trainer.train()
 
-def TrainedExpertsMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device):
-    logger.info("-" * 50)
-    logger.info("TrainedExpertsMoE Experiment")
-    logger.info("-" * 50)
+# def TrainedExpertsMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device):
+#     logger.info("-" * 50)
+#     logger.info("TrainedExpertsMoE Experiment")
+#     logger.info("-" * 50)
     
-    TrainedExpertsMoE_model = BasicMoE(trained_experts)
-    TrainedExpertsMoE_model.to(device)
+#     TrainedExpertsMoE_model = BasicMoE(trained_experts)
+#     TrainedExpertsMoE_model.to(device)
 
-    criterion = [nn.BCELoss(), nn.BCELoss()]
-    optimizer = optim.Adam(TrainedExpertsMoE_model.parameters(), lr=0.001, weight_decay=0.001)
+#     criterion = [nn.BCELoss(), nn.BCELoss()]
+#     optimizer = optim.Adam(TrainedExpertsMoE_model.parameters(), lr=0.001, weight_decay=0.001)
 
-    model_trainer = ModelTrainer(TrainedExpertsMoE_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device, "TrainedExpertsMoE")
-    model_trainer.train()
+#     model_trainer = ModelTrainer(TrainedExpertsMoE_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device, "TrainedExpertsMoE")
+#     model_trainer.train()
 
-def BasicMMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device):
+def BasicMMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device):
     logger.info("-" * 50)
     logger.info("BasicMMoE Experiment")
     logger.info("-" * 50)
     
     BasicMMoE_model = BasicMMoE(384, 128, 3)
     BasicMMoE_model.to(device)
-
-    criterion = [nn.BCELoss(), nn.BCELoss()]
-    optimizer = optim.Adam(BasicMMoE_model.parameters(), lr=0.001, weight_decay=0.001)
+    
+    is_regression = torch.tensor([False, False])
+    criterion = MultiTaskLoss(nn.BCELoss(), nn.BCELoss(), is_regression).to(device)
+    optimizer = optim.Adam(list(BasicMMoE_model.parameters()) + list(criterion.parameters()), lr=0.001, weight_decay=0.001)
 
     model_trainer = ModelTrainer(BasicMMoE_model, toxicity_train_dataloader, toxicity_valid_dataloader, criterion, optimizer, device, "BasicMMoE")
     model_trainer.train()
@@ -98,10 +102,9 @@ def main():
     toxicity_test_dataloader = DataLoader(toxicity_test_dataset, batch_size=32, shuffle=False)
 
     ## Model Initializatoins
-    SharedModelExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device)
-    BasicMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device)
-    # TrainedExpertsMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device)
-    BasicMMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, toxicity_test_dataloader, device)
+    SharedModelExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device)
+    BasicMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device)
+    BasicMMoEExperiment(toxicity_train_dataloader, toxicity_valid_dataloader, device)
 
     
 if __name__ == "__main__":

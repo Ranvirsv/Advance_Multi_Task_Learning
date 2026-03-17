@@ -81,3 +81,31 @@
 2026-03-16 20:08:54,830 - BasicMoE - INFO - Epoch 5/5 - Train Loss: 1.1200, Valid Loss: 1.1070
 2026-03-16 20:08:54,830 - BasicMoE - INFO - No improvement in validation loss for 1 epoch(s).
 2026-03-16 20:08:54,830 - BasicMoE - INFO - Training completed.
+2026-03-17 23:29:40,203 - BasicMoE - INFO - --------------------------------------------------
+2026-03-17 23:29:40,204 - BasicMoE - INFO - Started Training: BasicMoE
+2026-03-17 23:29:40,204 - BasicMoE - INFO - --------------------------------------------------
+2026-03-17 23:29:42,421 - BasicMoE - INFO - Epoch 1/5 - Train Loss: 1.2101, Valid Loss: 1.1259
+2026-03-17 23:29:42,438 - BasicMoE - INFO - Saved new best model with validation loss: 1.1259
+2026-03-17 23:29:44,840 - BasicMoE - INFO - Epoch 2/5 - Train Loss: 1.1365, Valid Loss: 1.1095
+2026-03-17 23:29:44,858 - BasicMoE - INFO - Saved new best model with validation loss: 1.1095
+2026-03-17 23:29:47,042 - BasicMoE - INFO - Epoch 3/5 - Train Loss: 1.1249, Valid Loss: 1.1229
+2026-03-17 23:29:47,042 - BasicMoE - INFO - No improvement in validation loss for 1 epoch(s).
+2026-03-17 23:29:49,186 - BasicMoE - INFO - Epoch 4/5 - Train Loss: 1.1218, Valid Loss: 1.1066
+2026-03-17 23:29:49,204 - BasicMoE - INFO - Saved new best model with validation loss: 1.1066
+2026-03-17 23:29:51,363 - BasicMoE - INFO - Epoch 5/5 - Train Loss: 1.1179, Valid Loss: 1.1043
+2026-03-17 23:29:51,380 - BasicMoE - INFO - Saved new best model with validation loss: 1.1043
+2026-03-17 23:29:51,380 - BasicMoE - INFO - Training completed.
+2026-03-17 23:32:55,018 - BasicMoE - INFO - --------------------------------------------------
+2026-03-17 23:32:55,018 - BasicMoE - INFO - Started Training: BasicMoE
+2026-03-17 23:32:55,018 - BasicMoE - INFO - --------------------------------------------------
+2026-03-17 23:32:57,436 - BasicMoE - INFO - Epoch 1/5 - Train Loss: 1.1918, Valid Loss: 1.1117
+2026-03-17 23:32:57,459 - BasicMoE - INFO - Saved new best model with validation loss: 1.1117
+2026-03-17 23:32:59,785 - BasicMoE - INFO - Epoch 2/5 - Train Loss: 1.1167, Valid Loss: 1.0991
+2026-03-17 23:32:59,803 - BasicMoE - INFO - Saved new best model with validation loss: 1.0991
+2026-03-17 23:33:02,025 - BasicMoE - INFO - Epoch 3/5 - Train Loss: 1.1088, Valid Loss: 1.0949
+2026-03-17 23:33:02,043 - BasicMoE - INFO - Saved new best model with validation loss: 1.0949
+2026-03-17 23:33:04,260 - BasicMoE - INFO - Epoch 4/5 - Train Loss: 1.1070, Valid Loss: 1.0810
+2026-03-17 23:33:04,281 - BasicMoE - INFO - Saved new best model with validation loss: 1.0810
+2026-03-17 23:33:06,465 - BasicMoE - INFO - Epoch 5/5 - Train Loss: 1.1020, Valid Loss: 1.0941
+2026-03-17 23:33:06,465 - BasicMoE - INFO - No improvement in validation loss for 1 epoch(s).
+2026-03-17 23:33:06,465 - BasicMoE - INFO - Training completed.

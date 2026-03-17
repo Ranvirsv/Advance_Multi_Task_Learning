@@ -34,6 +34,8 @@ class ModelTrainer:
 
     def train_one_epoch(self, epoch):
         self.model.train()
+        self.criterion.train()
+
         running_loss = 0.
         total_loss, engagement_loss, toxicity_loss = 0, 0, 0
         
@@ -49,10 +51,11 @@ class ModelTrainer:
             
             eng_out, tox_out = self.model(inputs)
         
-            engagement_loss = self.criterion[0](eng_out.view(-1), engagement_label.float())
-            toxicity_loss = self.criterion[1](tox_out.view(-1), toxicity_label.float())
+            # engagement_loss = self.criterion[0](eng_out.view(-1), engagement_label.float())
+            # toxicity_loss = self.criterion[1](tox_out.view(-1), toxicity_label.float())
+
+            total_loss, engagement_loss, toxicity_loss = self.criterion(eng_out, tox_out, engagement_label, toxicity_label)
         
-            total_loss = engagement_loss + toxicity_loss
             total_loss.backward()
             self.optimizer.step()
 
@@ -111,6 +114,7 @@ class ModelTrainer:
     def evaluate(self, epoch=None):
         self.model.eval()
         running_loss = 0.
+        self.criterion.eval()
         
         desc = f"Epoch {epoch} [Valid]" if epoch else "Evaluation"
         progress_bar = tqdm(self.valid_dataloader, desc=desc, leave=False)
@@ -124,13 +128,11 @@ class ModelTrainer:
                 
                 eng_out, tox_out = self.model(inputs)
             
-                engagement_loss = self.criterion[0](eng_out.view(-1), engagement_label.float())
-                toxicity_loss = self.criterion[1](tox_out.view(-1), toxicity_label.float())
+                total_loss, engagement_loss, toxicity_loss = self.criterion(eng_out, tox_out, engagement_label, toxicity_label)
             
-                total_loss = engagement_loss + toxicity_loss
                 running_loss += total_loss.item()
                 
-                progress_bar.set_postfix({'loss': running_loss / (i + 1)})
+                progress_bar.set_postfix({'loss': running_loss / (i + 1), 'engagement_loss': engagement_loss.item(), 'toxicity_loss': toxicity_loss.item()})
             
         return running_loss / len(self.valid_dataloader)
 
